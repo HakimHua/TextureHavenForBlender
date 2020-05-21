@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "E:\\Usr\\local\\blender-2.82a\\2.82\\python\\bin\\python.exe",
+    "python.autoComplete.extraPaths":[
+        "E:\\Usr\\local\\blender-2.82a\\2.82\\python\\lib\\site-packages",
+        "E:\\Usr\\local\\blender-2.82a\\2.82\\scripts\\modules"
+    ],
+    "git.ignoreLimitWarning": true
+}
