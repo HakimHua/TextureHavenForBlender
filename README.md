@@ -47,16 +47,16 @@ Finally, use the "Update DB" buttons to update the database (mainly the thumbnai
 
 After enabling the add-on, you can find Texture Haven from "Properties-Material":
 
-![1.5](Pics/1.5.png)
+![1.5](Pics/1.5.PNG)
 
 Choose your favorite material and click "Download Texture". button
 
 When the download is complete, the "Build Material" button appears under the download button. 
 
-![1.6](Pics/1.6.png)
+![1.6](Pics/1.6.PNG)
 
 After the building is complete, you can find the constructed material in the material slot:
 
-![1.7](Pics/1.7.png)
+![1.7](Pics/1.7.PNG)
 
 Assign a material. and it will be displayed by the corresponding object.
