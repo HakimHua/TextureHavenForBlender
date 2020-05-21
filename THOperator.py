@@ -232,4 +232,6 @@ class TH_OT_MaterialBuildOp(bpy.types.Operator):
         material.node_tree.links.new(norm_texture_node.outputs[0], NormapMap_node.inputs[1])
         material.node_tree.links.new(NormapMap_node.outputs[0], priciple_node.inputs[19])
 
+        bpy.context.object.material_slots[0].material = material
+
         return {"FINISHED"}
