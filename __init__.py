@@ -152,6 +152,16 @@ def register():
     )
 
     # 分辨率
+    WindowManager.th_resolution = EnumProperty(
+        name = "Resolution",
+        items = [
+            ("1k", "1k", "1k", 1),
+            ("2k", "2k", "2k", 2),
+            ("4k", "4k", "4k", 3),
+            ("8k", "8k", "8k", 4)
+        ],
+        update = selectNewTexture,
+    )
 
     WindowManager.th_isDownloading = BoolProperty(
         default = False,
