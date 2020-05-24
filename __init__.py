@@ -192,6 +192,7 @@ def unregister():
 
     del WindowManager.th_categ
     del WindowManager.th_matrial
+    del WindowManager.th_resolution
 
     for pcoll in thumb_collection.values():
         bpy.utils.previews.remove(pcoll)
