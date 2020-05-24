@@ -38,6 +38,9 @@ class TH_Panel(bpy.types.Panel):
         row.template_icon_view(wm, "th_matrial")
 
         row = layout.row()
+        row.prop(wm, "th_resolution", text = "Resolution")
+
+        row = layout.row()
         row.operator("th.download")
 
         wm.th_DownloadProcess = getProcess()
@@ -46,6 +49,6 @@ class TH_Panel(bpy.types.Panel):
             row = layout.row()
             row.prop(wm, "th_DownloadProcess", slider = True)
 
-        if not wm.th_isNewTexture:
+        if not wm.th_isNewTexture and not wm.th_isDownloading:
             row = layout.row()
             row.operator("th.build")

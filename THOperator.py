@@ -59,7 +59,7 @@ def DownloadTexture(url, path, context):
     z.close()
 
 # 多线程下载材质文件
-def DownloadMatrial(material_name, path, db_path, context):
+def DownloadMatrial(material_name, resolution, path, db_path, context):
     # 查询数据库，找到material_name对应的下载链接
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
@@ -74,7 +74,16 @@ def DownloadMatrial(material_name, path, db_path, context):
 
     conn.close()
 
-    download_t = threading.Thread(target=DownloadTexture, args = [url_1k, path, context])
+    if resolution == "1k":
+        download_t = threading.Thread(target=DownloadTexture, args = [url_1k, path, context])
+    elif resolution == "2k":
+        download_t = threading.Thread(target=DownloadTexture, args = [url_2k, path, context])
+    elif resolution == "4k":
+        download_t = threading.Thread(target=DownloadTexture, args = [url_4k, path, context])
+    elif resolution == "8k":
+        download_t = threading.Thread(target=DownloadTexture, args = [url_8k, path, context])
+    else:
+        download_t = threading.Thread(target=DownloadTexture, args = [url_1k, path, context])
 
     download_t.start()
 
@@ -90,7 +99,8 @@ class TH_OT_MaterialOperator(bpy.types.Operator):
 
         material_name = wm.th_matrial
         material_categ = wm.th_categ
-        material_path = pr.CatchDir + "Textures/" + material_categ + "/" + material_name + ".zip"
+        resolution = wm.th_resolution
+        material_path = pr.CatchDir + "Textures/" + material_categ + "/" + material_name + "_" + resolution + ".zip"
 
         db_path = pr.CatchDir + "/Thumbails/TextureHavenDataSet.db"
 
@@ -99,7 +109,7 @@ class TH_OT_MaterialOperator(bpy.types.Operator):
         if not os.path.exists(pr.CatchDir + "Textures/" + material_categ + "/"):
             os.mkdir(pr.CatchDir + "Textures/" + material_categ + "/")
 
-        DownloadMatrial(material_name, material_path, db_path, context)
+        DownloadMatrial(material_name, resolution, material_path, db_path, context)
 
         return {"FINISHED"}
 
@@ -114,7 +124,8 @@ class TH_OT_MaterialBuildOp(bpy.types.Operator):
 
         material_name = wm.th_matrial
         material_categ = wm.th_categ
-        material_path = pr.CatchDir + "Textures/" + material_categ + "/" + material_name + ".zip"
+        resolution = wm.th_resolution
+        material_path = pr.CatchDir + "Textures/" + material_categ + "/" + material_name + "_" + resolution + ".zip"
 
         AO_path = ""
         bump_path = ""
@@ -166,7 +177,7 @@ class TH_OT_MaterialBuildOp(bpy.types.Operator):
         z.close()
 
         # 创建新材质
-        material = bpy.data.materials.new(name = material_name)
+        material = bpy.data.materials.new(name = material_name + "_" + resolution)
 
         material.use_nodes = True
         # 删除原有的shader
