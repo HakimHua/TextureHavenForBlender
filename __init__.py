@@ -69,7 +69,7 @@ def get_category_item(self, context):
         # 读取缩略图
         categ_icon = pcoll.load(categ_name, categ_path, "IMAGE")
 
-        categ_item.append((categ_name, categ_name, "", categ_icon.icon_id, i))
+        categ_item.append((categ_name, categ_name, categ_name, categ_icon.icon_id, i))
         i += 1
     # 应用缩略图
     pcoll.categ_preview = categ_item
@@ -114,12 +114,13 @@ def get_material_item(self, context):
 
         material_icon = pcoll.load(material_name, material_path, "IMAGE")
 
-        material_item.append((material_name, material_name, "", material_icon.icon_id, i))
+        material_item.append((material_name, material_name, material_name, material_icon.icon_id, i))
         i += 1
     pcoll.categ_preview = material_item
     pcoll.categ_name = categ_name
 
     return pcoll.categ_preview
+
 
 def selectNewTexture(self, context):
     wm = context.window_manager
@@ -149,6 +150,8 @@ def register():
         name = "Material",
         update = selectNewTexture,
     )
+
+    # 分辨率
 
     WindowManager.th_isDownloading = BoolProperty(
         default = False,
