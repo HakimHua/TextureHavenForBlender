@@ -81,6 +81,7 @@ def DownloadMatrial(material_name, path, db_path, context):
 class TH_OT_MaterialOperator(bpy.types.Operator):
     bl_idname = "th.download"
     bl_label = "Download Texture"
+    bl_description = "Download Texture"
 
     # 下载、解压并构建材质
     def execute(self, context):
@@ -105,6 +106,7 @@ class TH_OT_MaterialOperator(bpy.types.Operator):
 class TH_OT_MaterialBuildOp(bpy.types.Operator):
     bl_idname = "th.build"
     bl_label= "Build Material"
+    bl_description = "Build and assign Material"
 
     def execute(self, context):
         wm = context.window_manager
