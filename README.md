@@ -6,9 +6,7 @@ Blender >= 2.8
 
 ## Abstract
 
-It is blender 2.8 addon, which is currently only applicable to windows 64 bit operating system. 
-
-The addon can query [TextureHaven's](https://texturehaven.com/textures/) texture map directly in blender, download the map and build the material.
+The addon can query [TextureHaven's](https://texturehaven.com/textures/) texture directly in blender, download the textures and build the material.
 
 ## Instructions
 
